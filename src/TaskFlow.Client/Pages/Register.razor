@@ -1,0 +1,35 @@
+﻿@page "/register"
+@using TaskFlow.Client.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h3>Daftar Akun TaskFlow</h3>
+
+        @if (!string.IsNullOrEmpty(error))
+        {
+            <div class="alert">@error</div>
+        }
+
+        <input @bind="email" placeholder="Email" />
+        <input @bind="password" type="password" placeholder="Password" />
+        <button @onclick="DoRegister">Register</button>
+        <button class="secondary" @onclick="GoToLogin">Sudah punya akun? Login</button>
+    </div>
+</div>
+
+@code {
+    private string email = "";
+    private string password = "";
+    private string? error;
+
+    private async Task DoRegister()
+    {
+        var (ok, err) = await Auth.RegisterAsync(email, password);
+        if (ok) Nav.NavigateTo("/", forceLoad: true);
+        else error = err;
+    }
+
+    private void GoToLogin() => Nav.NavigateTo("/login");
+}

@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+@using TaskFlow.Client.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="sidebar-brand">Task<span>Flow</span></div>
+
+        <nav class="sidebar-nav">
+            <NavLink href="/" Match="NavLinkMatch.All">🏠 Dashboard</NavLink>
+            <NavLink href="/tasks">📋 Tasks</NavLink>
+        </nav>
+
+        <div class="sidebar-footer">
+            @if (isLoggedIn)
+            {
+                <span class="user-email">@email</span>
+                <button @onclick="Logout">Logout</button>
+            }
+            else
+            {
+                <NavLink href="/login" style="display:block; margin-bottom:6px;">Login</NavLink>
+                <NavLink href="/register" style="display:block;">Register</NavLink>
+            }
+        </div>
+    </aside>
+
+    <div class="main-area">
+        <div class="topbar">
+            <h2>@(isLoggedIn ? "Dashboard" : "Welcome")</h2>
+            <span class="welcome">@(isLoggedIn ? $"Halo, {email}" : "Silakan login dulu")</span>
+        </div>
+        <main class="content">
+            @Body
+        </main>
+    </div>
+</div>
+
+@code {
+    private bool isLoggedIn;
+    private string? email;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshState();
+    }
+
+    private async Task RefreshState()
+    {
+        isLoggedIn = await Auth.IsLoggedInAsync();
+        email = await Auth.GetEmailAsync();
+    }
+
+    private async Task Logout()
+    {
+        await Auth.LogoutAsync();
+        Nav.NavigateTo("/login", forceLoad: true);
+    }
+}

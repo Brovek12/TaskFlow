@@ -1,0 +1,153 @@
+@page "/tasks"
+@using TaskFlow.Client.Services
+@using TaskFlow.Client.Models
+@inject TaskService TaskSvc
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<h3>Task Saya</h3>
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <div class="alert">@error</div>
+}
+
+<div class="card">
+    <input @bind="newTitle" placeholder="Judul task" />
+    <input @bind="newDescription" placeholder="Deskripsi (opsional)" />
+    <button @onclick="AddTask">Tambah Task</button>
+</div>
+
+@if (tasks == null)
+{
+    <p class="muted">Memuat...</p>
+}
+else if (tasks.Count == 0)
+{
+    <p class="muted">Belum ada task. Tambahkan yang pertama!</p>
+}
+else
+{
+    @foreach (var t in tasks)
+    {
+        <div class="task-item">
+            @if (editingId == t.Id)
+            {
+                <input @bind="editTitle" placeholder="Judul" />
+                <input @bind="editDescription" placeholder="Deskripsi" />
+                <label>
+                    <input type="checkbox" @bind="editIsDone" /> Selesai
+                </label>
+                <div class="task-actions">
+                    <button @onclick="SaveEdit">Simpan</button>
+                    <button class="secondary" @onclick="CancelEdit">Batal</button>
+                </div>
+            }
+            else
+            {
+                <label>
+                    <input type="checkbox" checked="@t.IsDone" @onchange="() => ToggleDone(t)" />
+                    <span class="task-title @(t.IsDone ? "done" : "")">@t.Title</span>
+                </label>
+
+                @if (!string.IsNullOrEmpty(t.Description))
+                {
+                    <div class="task-desc">@t.Description</div>
+                }
+
+                <div class="task-meta">
+                    Dibuat: @t.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")
+                </div>
+
+                <div class="task-actions">
+                    <button class="secondary" @onclick="() => StartEdit(t)">Edit</button>
+                    <button class="danger" @onclick="() => DeleteTask(t.Id)">Hapus</button>
+                </div>
+            }
+        </div>
+    }
+}
+
+@code {
+    private List<TaskResponse>? tasks;
+    private string newTitle = "";
+    private string newDescription = "";
+    private string? error;
+
+    private int? editingId;
+    private string editTitle = "";
+    private string editDescription = "";
+    private bool editIsDone;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!await Auth.IsLoggedInAsync())
+        {
+            Nav.NavigateTo("/login");
+            return;
+        }
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync()
+    {
+        tasks = await TaskSvc.GetAllAsync();
+    }
+
+    private async Task AddTask()
+    {
+        if (string.IsNullOrWhiteSpace(newTitle)) return;
+        error = null;
+
+        var ok = await TaskSvc.CreateAsync(newTitle,
+            string.IsNullOrWhiteSpace(newDescription) ? null : newDescription);
+        if (!ok)
+        {
+            error = "Gagal menambah task";
+            return;
+        }
+
+        newTitle = "";
+        newDescription = "";
+        await LoadAsync();
+    }
+
+    private void StartEdit(TaskResponse t)
+    {
+        editingId = t.Id;
+        editTitle = t.Title;
+        editDescription = t.Description ?? "";
+        editIsDone = t.IsDone;
+    }
+
+    private void CancelEdit() => editingId = null;
+
+    private async Task SaveEdit()
+    {
+        if (editingId is null) return;
+        var ok = await TaskSvc.UpdateAsync(editingId.Value, editTitle,
+            string.IsNullOrWhiteSpace(editDescription) ? null : editDescription, editIsDone);
+        if (ok)
+        {
+            editingId = null;
+            await LoadAsync();
+        }
+        else
+        {
+            error = "Gagal menyimpan";
+        }
+    }
+
+    private async Task ToggleDone(TaskResponse t)
+    {
+        await TaskSvc.UpdateAsync(t.Id, t.Title, t.Description, !t.IsDone);
+        await LoadAsync();
+    }
+
+    private async Task DeleteTask(int id)
+    {
+        var ok = await TaskSvc.DeleteAsync(id);
+        if (ok) await LoadAsync();
+        else error = "Gagal menghapus";
+    }
+}

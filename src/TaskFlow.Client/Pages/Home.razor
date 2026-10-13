@@ -1,0 +1,85 @@
+﻿@page "/"
+@using TaskFlow.Client.Services
+@using TaskFlow.Client.Models
+@inject TaskService TaskSvc
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+@if (!isLoggedIn)
+{
+    <div class="card">
+        <h1>Selamat Datang di TaskFlow</h1>
+        <p class="muted">Fullstack .NET Task Manager — ASP.NET Core + Blazor + MySQL</p>
+        <button @onclick="GoToLogin">Login</button>
+        <button class="secondary" @onclick="GoToRegister">Register</button>
+    </div>
+}
+else
+{
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Task</div>
+            <div class="stat-value">@total</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Selesai</div>
+            <div class="stat-value done">@done</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Pending</div>
+            <div class="stat-value pending">@pending</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Task Terbaru</h3>
+        @if (recentTasks == null)
+        {
+            <p class="muted">Memuat...</p>
+        }
+        else if (recentTasks.Count == 0)
+        {
+            <p class="muted">Belum ada task. <a href="/tasks">Tambah sekarang</a></p>
+        }
+        else
+        {
+            @foreach (var t in recentTasks)
+            {
+                <div class="task-item">
+                    <label>
+                        <input type="checkbox" checked="@t.IsDone" disabled />
+                        <span class="task-title @(t.IsDone ? "done" : "")">@t.Title</span>
+                    </label>
+                    @if (!string.IsNullOrEmpty(t.Description))
+                    {
+                        <div class="task-desc">@t.Description</div>
+                    }
+                </div>
+            }
+            <button class="secondary" @onclick="GoToTasks">Lihat Semua Task</button>
+        }
+    </div>
+}
+
+@code {
+    private bool isLoggedIn;
+    private List<TaskResponse>? allTasks;
+    private List<TaskResponse>? recentTasks;
+    private int total, done, pending;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoggedIn = await Auth.IsLoggedInAsync();
+        if (!isLoggedIn) return;
+
+        allTasks = await TaskSvc.GetAllAsync();
+        total = allTasks.Count;
+        done = allTasks.Count(t => t.IsDone);
+        pending = total - done;
+        recentTasks = allTasks.Take(5).ToList();
+    }
+
+    private void GoToLogin() => Nav.NavigateTo("/login");
+    private void GoToRegister() => Nav.NavigateTo("/register");
+    private void GoToTasks() => Nav.NavigateTo("/tasks");
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TdDgORMCR6LD7rWMppniaTF9DwKxJM0damgCJwaxZok=",
+  "Hash": "g56vRxdRDjQmGePEee6zLDvCxKDNihPDtvjIAJ3JoYo=",
   "Source": "TaskFlow.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
@@ -128,15 +128,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.js.map"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.js.map"
     },
     {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.31.w9o6uw332o.js",
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.32.w224cqogel.js",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
       "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.31.w9o6uw332o.js",
+      "RelativePath": "_framework/dotnet.native.8.0.32.w224cqogel.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.native.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.native.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -166,15 +166,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
     },
     {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.31.nkof27xgry.js",
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.32.9yayex0gmr.js",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
       "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.31.nkof27xgry.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.32.9yayex0gmr.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,7 +185,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
@@ -204,7 +204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
@@ -223,7 +223,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
@@ -242,7 +242,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
@@ -261,7 +261,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.wasm",
@@ -4273,23 +4273,23 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.IsolatedStorage.wasm"
     },
     {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\2xxlp2k727.gz",
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\2x75i33igx.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
       "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\39d6z78xp2.gz",
@@ -4347,25 +4347,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.Watcher.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\3mjaso7fkm.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\3qjwxcsi6i.gz",
@@ -4786,6 +4767,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Text.Json.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\88c30pk4qr.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\895uizks0a.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -4938,6 +4938,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\MudBlazor.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\9yayex0gmr.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.32.9yayex0gmr.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.32.9yayex0gmr.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.32.9yayex0gmr.js"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\a37xulhm2k.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -5069,6 +5088,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.Serialization.Formatters.wasm"
+    },
+    {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\b65tbw5fuv.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\bbhs8v89j1.gz",
@@ -5698,6 +5736,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\ggyklkrov2.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\ghtdi35omy.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -5791,25 +5848,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Diagnostics.TextWriterTraceListener.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\hwbbwg5ufc.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\ibbz4zumr4.gz",
@@ -6534,25 +6572,6 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Configuration.FileExtensions.wasm"
     },
     {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\nkof27xgry.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.31.nkof27xgry.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.31.nkof27xgry.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.31.nkof27xgry.js"
-    },
-    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\nmpb3pnlop.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -6589,25 +6608,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\o68xx2vsy2.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\obhvupxgib.gz",
@@ -6665,6 +6665,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.wasm"
+    },
+    {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\op1kgtgbz0.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\optlppe2u2.gz",
@@ -6912,25 +6931,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.JSInterop.WebAssembly.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\qsofrqtqpm.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\r1hezxbj7u.gz",
@@ -7313,25 +7313,6 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.Pipes.AccessControl.wasm"
     },
     {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\tdou1v7cmw.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
-    },
-    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\telo8qchuv.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -7522,6 +7503,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Linq.Parallel.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\vmcm3mhfy5.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\vqwtt95zk1.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -7541,6 +7541,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Net.Requests.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\w224cqogel.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.32.w224cqogel.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.32.w224cqogel.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.32.w224cqogel.js"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\w2uyhl1qqn.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -7558,25 +7577,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Net.WebClient.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\w9o6uw332o.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.31.w9o6uw332o.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.31.w9o6uw332o.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.31.w9o6uw332o.js"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\wamh472fzg.gz",
@@ -7769,6 +7769,25 @@
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Threading.Timer.wasm"
     },
     {
+      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\xu0p3tmtag.gz",
+      "SourceId": "TaskFlow.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
+    },
+    {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\y2kyhot5ir.gz",
       "SourceId": "TaskFlow.Client",
       "SourceType": "Computed",
@@ -7843,25 +7862,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Resources.Writer.wasm"
-    },
-    {
-      "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\yw7calsvm5.gz",
-      "SourceId": "TaskFlow.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
       "Identity": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\obj\\Debug\\net8.0\\compressed\\z1qdptlef3.gz",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RbHxNbOsei0=",
+  "dgSpecHash": "0inilWxwVGs=",
   "success": true,
   "projectFilePath": "D:\\project\\TaskFlow\\src\\TaskFlow.Client\\TaskFlow.Client.csproj",
   "expectedPackageFiles": [
@@ -30,11 +30,11 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.jsinterop\\8.0.31\\microsoft.jsinterop.8.0.31.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.jsinterop.webassembly\\8.0.31\\microsoft.jsinterop.webassembly.8.0.31.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.31\\microsoft.net.illink.tasks.8.0.31.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.31\\microsoft.net.sdk.webassembly.pack.8.0.31.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.32\\microsoft.net.illink.tasks.8.0.32.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.32\\microsoft.net.sdk.webassembly.pack.8.0.32.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mudblazor\\8.15.0\\mudblazor.8.15.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.31\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.31.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.32\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.32.nupkg.sha512"
   ],
   "logs": []
 }

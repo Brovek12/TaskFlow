@@ -1,3 +1,4 @@
+using MudBlazor.Services;                      // ← TAMBAH INI (bukan MudBlazor)
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using TaskFlow.Client;
@@ -16,5 +17,6 @@ builder.Services.AddScoped<TokenStore>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<AdminService>();
+builder.Services.AddMudServices();
 
 await builder.Build().RunAsync();

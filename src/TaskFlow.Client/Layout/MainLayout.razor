@@ -3,50 +3,52 @@
 @inject AuthService Auth
 @inject NavigationManager Nav
 
-<div class="app-layout">
-    <aside class="sidebar">
-        <div class="sidebar-brand">Task<span>Flow</span></div>
-
-        <nav class="sidebar-nav">
-            <NavLink href="/" Match="NavLinkMatch.All">🏠 Dashboard</NavLink>
-            <NavLink href="/tasks">📋 Tasks</NavLink>
-
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Primary">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="ToggleDrawer" />
+        <MudText Typo="Typo.h6" Class="ml-2">TaskFlow</MudText>
+        <MudSpacer />
+        @if (isLoggedIn)
+        {
+            <MudText Typo="Typo.body2" Class="mr-2">@email</MudText>
             @if (isAdmin)
             {
-                <NavLink href="/admin">🛡️ Admin Panel</NavLink>
+                <MudChip T="string" Size="Size.Small" Color="Color.Warning" Class="mr-2">ADMIN</MudChip>
             }
-        </nav>
+            <MudIconButton Icon="@Icons.Material.Filled.Logout"
+                           Color="Color.Inherit"
+                           OnClick="Logout" />
+        }
+    </MudAppBar>
 
-        <div class="sidebar-footer">
-            @if (isLoggedIn)
+    <MudDrawer @bind-Open="_drawerOpen"
+               Elevation="1"
+               ClipMode="DrawerClipMode.Always">
+        <MudNavMenu>
+            <MudNavLink Href="/" Match="NavLinkMatch.All"
+                        Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+            <MudNavLink Href="/tasks"
+                        Icon="@Icons.Material.Filled.List">Tasks</MudNavLink>
+            @if (isAdmin)
             {
-                <span class="user-email">@email</span>
-                @if (isAdmin)
-                {
-                    <span class="user-role-badge">ADMIN</span>
-                }
-                <button @onclick="Logout">Logout</button>
+                <MudNavLink Href="/admin"
+                            Icon="@Icons.Material.Filled.AdminPanelSettings">Admin Panel</MudNavLink>
             }
-            else
-            {
-                <NavLink href="/login" style="display:block; margin-bottom:6px;">Login</NavLink>
-                <NavLink href="/register" style="display:block;">Register</NavLink>
-            }
-        </div>
-    </aside>
+        </MudNavMenu>
+    </MudDrawer>
 
-    <div class="main-area">
-        <div class="topbar">
-            <h2>@(isLoggedIn ? "Dashboard" : "Welcome")</h2>
-            <span class="welcome">@(isLoggedIn ? $"Halo, {email}" : "Silakan login dulu")</span>
-        </div>
-        <main class="content">
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
             @Body
-        </main>
-    </div>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
 
 @code {
+    private bool _drawerOpen = true;
     private bool isLoggedIn;
     private bool isAdmin;
     private string? email;
@@ -57,6 +59,8 @@
         isAdmin = await Auth.IsAdminAsync();
         email = await Auth.GetEmailAsync();
     }
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
 
     private async Task Logout()
     {

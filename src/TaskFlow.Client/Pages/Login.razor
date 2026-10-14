@@ -1,23 +1,27 @@
 ﻿@page "/login"
+@layout AuthLayout
 @using TaskFlow.Client.Services
 @inject AuthService Auth
 @inject NavigationManager Nav
 
-<div class="auth-wrapper">
-    <div class="auth-card">
-        <h3>Login ke TaskFlow</h3>
+<MudPaper Class="pa-6" Elevation="3">
+    <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-6">Login ke TaskFlow</MudText>
 
-        @if (!string.IsNullOrEmpty(error))
-        {
-            <div class="alert">@error</div>
-        }
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4">@error</MudAlert>
+    }
 
-        <input @bind="email" placeholder="Email" />
-        <input @bind="password" type="password" placeholder="Password" />
-        <button @onclick="DoLogin">Login</button>
-        <button class="secondary" @onclick="GoToRegister">Belum punya akun? Register</button>
-    </div>
-</div>
+    <MudTextField @bind-Value="email" Label="Email" Variant="Variant.Outlined" Class="mb-3" />
+    <MudTextField @bind-Value="password" Label="Password" Variant="Variant.Outlined" InputType="InputType.Password" Class="mb-3" />
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="DoLogin" Class="mb-3">
+        Login
+    </MudButton>
+    <MudButton Variant="Variant.Text" Color="Color.Secondary" FullWidth="true" OnClick="GoToRegister">
+        Belum punya akun? Register
+    </MudButton>
+</MudPaper>
 
 @code {
     private string email = "";

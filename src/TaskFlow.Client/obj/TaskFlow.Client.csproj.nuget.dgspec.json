@@ -69,6 +69,10 @@
               "target": "Package",
               "version": "[8.0.31, )",
               "autoReferenced": true
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[8.15.0, )"
             }
           },
           "imports": [

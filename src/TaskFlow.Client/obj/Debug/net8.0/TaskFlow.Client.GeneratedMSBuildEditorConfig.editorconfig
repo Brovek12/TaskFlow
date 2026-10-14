@@ -3,6 +3,9 @@ build_property.EnableAotAnalyzer =
 build_property.EnableSingleFileAnalyzer = 
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudAllowedAttributeList = 
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -24,6 +27,22 @@ build_property._RazorSourceGeneratorDebug =
 
 [D:/project/TaskFlow/src/TaskFlow.Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/TaskFlow/src/TaskFlow.Client/Dialogs/ConfirmDeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = RGlhbG9nc1xDb25maXJtRGVsZXRlRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/TaskFlow/src/TaskFlow.Client/Dialogs/CreateTaskDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = RGlhbG9nc1xDcmVhdGVUYXNrRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/TaskFlow/src/TaskFlow.Client/Dialogs/EditTaskDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = RGlhbG9nc1xFZGl0VGFza0RpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/TaskFlow/src/TaskFlow.Client/Layout/AuthLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEF1dGhMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/project/TaskFlow/src/TaskFlow.Client/Pages/Admin.razor]

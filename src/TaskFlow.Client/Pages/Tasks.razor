@@ -1,83 +1,141 @@
 @page "/tasks"
 @using TaskFlow.Client.Services
 @using TaskFlow.Client.Models
+@using TaskFlow.Client.Dialogs
 @inject TaskService TaskSvc
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
-<h3>Task Saya</h3>
-
-@if (!string.IsNullOrEmpty(error))
-{
-    <div class="alert">@error</div>
-}
-
-<div class="card">
-    <input @bind="newTitle" placeholder="Judul task" />
-    <input @bind="newDescription" placeholder="Deskripsi (opsional)" />
-    <button @onclick="AddTask">Tambah Task</button>
-</div>
-
-@if (tasks == null)
-{
-    <p class="muted">Memuat...</p>
-}
-else if (tasks.Count == 0)
-{
-    <p class="muted">Belum ada task. Tambahkan yang pertama!</p>
-}
-else
-{
-    @foreach (var t in tasks)
-    {
-        <div class="task-item">
-            @if (editingId == t.Id)
-            {
-                <input @bind="editTitle" placeholder="Judul" />
-                <input @bind="editDescription" placeholder="Deskripsi" />
-                <label>
-                    <input type="checkbox" @bind="editIsDone" /> Selesai
-                </label>
-                <div class="task-actions">
-                    <button @onclick="SaveEdit">Simpan</button>
-                    <button class="secondary" @onclick="CancelEdit">Batal</button>
-                </div>
-            }
-            else
-            {
-                <label>
-                    <input type="checkbox" checked="@t.IsDone" @onchange="() => ToggleDone(t)" />
-                    <span class="task-title @(t.IsDone ? "done" : "")">@t.Title</span>
-                </label>
-
-                @if (!string.IsNullOrEmpty(t.Description))
-                {
-                    <div class="task-desc">@t.Description</div>
-                }
-
-                <div class="task-meta">
-                    Dibuat: @t.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")
-                </div>
-
-                <div class="task-actions">
-                    <button class="secondary" @onclick="() => StartEdit(t)">Edit</button>
-                    <button class="danger" @onclick="() => DeleteTask(t.Id)">Hapus</button>
-                </div>
-            }
+<MudPaper Class="pa-6" Elevation="0" Outlined="true">
+    <div class="d-flex align-center mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Primary" Size="Size.Large" Class="mr-3" />
+        <div>
+            <MudText Typo="Typo.h5">Task Saya</MudText>
+            <MudText Typo="Typo.body2" Class="mud-text-secondary">
+                @(filteredTasks?.Count ?? 0) dari @(tasks?.Count ?? 0) task
+            </MudText>
         </div>
+        <MudSpacer />
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.Add"
+                   OnClick="OpenCreateDialog"
+                   Size="Size.Medium"
+                   DisableElevation="false">
+            Tambah Task
+        </MudButton>
+    </div>
+
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4" Dense="true">@error</MudAlert>
     }
-}
+
+    <MudTextField @bind-Value="search"
+                  Placeholder="Cari task berdasarkan judul atau deskripsi..."
+                  Adornment="Adornment.Start"
+                  AdornmentIcon="@Icons.Material.Filled.Search"
+                  IconSize="Size.Medium"
+                  Immediate="true"
+                  Variant="Variant.Outlined"
+                  Margin="Margin.Dense"
+                  Class="mb-4"
+                  Clearable="true" />
+
+    <MudDataGrid T="TaskResponse"
+                 Items="@filteredTasks"
+                 Hover="true"
+                 Dense="true"
+                 Striped="true"
+                 Bordered="false"
+                 Elevation="0"
+                 Breakpoint="Breakpoint.Sm"
+                 Loading="@(tasks == null)"
+                 LoadingProgressColor="Color.Primary">
+        <Columns>
+            <TemplateColumn Title="" Sortable="false">
+                <CellTemplate>
+                    <MudCheckBox T="bool"
+                                 Value="@context.Item.IsDone"
+                                 ValueChanged="@(v => ToggleDone(context.Item))"
+                                 Dense="true"
+                                 Color="Color.Success" />
+                </CellTemplate>
+            </TemplateColumn>
+
+            <PropertyColumn Property="x => x.Title" Title="Judul">
+                <CellTemplate>
+                    <div class="d-flex align-center">
+                        <MudIcon Icon="@(context.Item.IsDone ? Icons.Material.Filled.CheckCircle : Icons.Material.Outlined.RadioButtonUnchecked)"
+                                 Color="@(context.Item.IsDone ? Color.Success : Color.Default)"
+                                 Size="Size.Small"
+                                 Class="mr-2" />
+                        <MudText Style="@(context.Item.IsDone ? "text-decoration: line-through; color: #9ca3af;" : "font-weight: 500;")">
+                            @context.Item.Title
+                        </MudText>
+                    </div>
+                </CellTemplate>
+            </PropertyColumn>
+
+            <PropertyColumn Property="x => x.Description" Title="Deskripsi">
+                <CellTemplate>
+                    @if (!string.IsNullOrEmpty(context.Item.Description))
+                    {
+                        <MudText Typo="Typo.body2" Class="mud-text-secondary">@context.Item.Description</MudText>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.body2" Class="mud-text-secondary" Style="opacity: 0.4">—</MudText>
+                    }
+                </CellTemplate>
+            </PropertyColumn>
+
+            <PropertyColumn Property="x => x.CreatedAt" Title="Dibuat">
+                <CellTemplate>
+                    <MudChip T="string" Size="Size.Small" Variant="Variant.Text" Color="Color.Default">
+                        @context.Item.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")
+                    </MudChip>
+                </CellTemplate>
+            </PropertyColumn>
+
+            <TemplateColumn Title="Aksi" Sortable="false">
+                <CellTemplate>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Size="Size.Small"
+                                   Color="Color.Primary"
+                                   OnClick="@(() => OpenEditDialog(context.Item))"
+                                   Title="Edit" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                   Size="Size.Small"
+                                   Color="Color.Error"
+                                   OnClick="@(() => DeleteTask(context.Item.Id))"
+                                   Title="Hapus" />
+                </CellTemplate>
+            </TemplateColumn>
+        </Columns>
+        <NoRecordsContent>
+            <div class="text-center py-8">
+                <MudIcon Icon="@Icons.Material.Outlined.Inbox" Size="Size.Large" Color="Color.Default" Style="opacity: 0.3" />
+                <MudText Typo="Typo.body1" Class="mt-2 mud-text-secondary">Belum ada task</MudText>
+                <MudText Typo="Typo.body2" Class="mud-text-secondary">Klik "Tambah Task" untuk memulai</MudText>
+            </div>
+        </NoRecordsContent>
+        <LoadingContent>
+            <div class="text-center py-8">
+                <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                <MudText Typo="Typo.body2" Class="mt-2 mud-text-secondary">Memuat task...</MudText>
+            </div>
+        </LoadingContent>
+    </MudDataGrid>
+</MudPaper>
 
 @code {
     private List<TaskResponse>? tasks;
-    private string newTitle = "";
-    private string newDescription = "";
+    private List<TaskResponse>? filteredTasks;
+    private string search = "";
     private string? error;
-
-    private int? editingId;
-    private string editTitle = "";
-    private string editDescription = "";
-    private bool editIsDone;
 
     protected override async Task OnInitializedAsync()
     {
@@ -92,50 +150,58 @@ else
     private async Task LoadAsync()
     {
         tasks = await TaskSvc.GetAllAsync();
+        ApplyFilter();
     }
 
-    private async Task AddTask()
+    private void ApplyFilter()
     {
-        if (string.IsNullOrWhiteSpace(newTitle)) return;
-        error = null;
-
-        var ok = await TaskSvc.CreateAsync(newTitle,
-            string.IsNullOrWhiteSpace(newDescription) ? null : newDescription);
-        if (!ok)
+        if (tasks == null)
         {
-            error = "Gagal menambah task";
+            filteredTasks = null;
             return;
         }
 
-        newTitle = "";
-        newDescription = "";
-        await LoadAsync();
+        IEnumerable<TaskResponse> q = tasks;
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var s = search.ToLowerInvariant();
+            q = q.Where(t =>
+                t.Title.ToLowerInvariant().Contains(s) ||
+                (t.Description ?? "").ToLowerInvariant().Contains(s));
+        }
+
+        filteredTasks = q.ToList();
     }
 
-    private void StartEdit(TaskResponse t)
+   private async Task OpenCreateDialog()
+{
+    var parameters = new DialogParameters<CreateTaskDialog>
     {
-        editingId = t.Id;
-        editTitle = t.Title;
-        editDescription = t.Description ?? "";
-        editIsDone = t.IsDone;
-    }
+        { x => x.OnSaved, EventCallback.Factory.Create(this, LoadAsync) }
+    };
 
-    private void CancelEdit() => editingId = null;
-
-    private async Task SaveEdit()
+    var options = new DialogOptions
     {
-        if (editingId is null) return;
-        var ok = await TaskSvc.UpdateAsync(editingId.Value, editTitle,
-            string.IsNullOrWhiteSpace(editDescription) ? null : editDescription, editIsDone);
-        if (ok)
+        MaxWidth = MaxWidth.Medium,      // ← ganti dari Small ke Medium (960px)
+        FullWidth = true,
+        CloseOnEscapeKey = true,
+        CloseButton = true
+    };
+
+    var dialog = await DialogService.ShowAsync<CreateTaskDialog>("", parameters, options);
+    await dialog.Result;
+}
+    private async Task OpenEditDialog(TaskResponse task)
+    {
+        var parameters = new DialogParameters<EditTaskDialog>
         {
-            editingId = null;
-            await LoadAsync();
-        }
-        else
-        {
-            error = "Gagal menyimpan";
-        }
+            { x => x.Task, task },
+            { x => x.OnSaved, EventCallback.Factory.Create(this, LoadAsync) }
+        };
+
+        var dialog = await DialogService.ShowAsync<EditTaskDialog>("Edit Task", parameters);
+        await dialog.Result;
     }
 
     private async Task ToggleDone(TaskResponse t)
@@ -147,7 +213,14 @@ else
     private async Task DeleteTask(int id)
     {
         var ok = await TaskSvc.DeleteAsync(id);
-        if (ok) await LoadAsync();
-        else error = "Gagal menghapus";
+        if (ok)
+        {
+            Snackbar.Add("Task dihapus", Severity.Success);
+            await LoadAsync();
+        }
+        else
+        {
+            error = "Gagal menghapus";
+        }
     }
 }

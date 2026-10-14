@@ -10,16 +10,31 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="TaskFlow.Client.styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
+   <div id="app">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Roboto', sans-serif; background: #f5f7fa;">
+        <svg style="width: 48px; height: 48px; animation: mud-spin 1.4s linear infinite;" viewBox="22 22 44 44">
+            <circle cx="44" cy="44" r="20.2" fill="none" stroke="#594AE2" stroke-width="3.6" style="stroke-dasharray: 80px, 200px; animation: mud-dash 1.4s ease-in-out infinite;"></circle>
         </svg>
-        <div class="loading-progress-text"></div>
+        <p style="color: #6b7280; margin-top: 16px; font-size: 14px;">Memuat aplikasi...</p>
     </div>
+</div>
+
+<style>
+    @keyframes mud-spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    @keyframes mud-dash {
+        0% { stroke-dasharray: 1px, 200px; stroke-dashoffset: 0; }
+        50% { stroke-dasharray: 100px, 200px; stroke-dashoffset: -15px; }
+        100% { stroke-dasharray: 100px, 200px; stroke-dashoffset: -125px; }
+    }
+</style>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -27,6 +42,7 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 </body>
 
 </html>

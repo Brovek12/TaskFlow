@@ -7,62 +7,167 @@
 
 @if (!isLoggedIn)
 {
-    <div class="card">
-        <h1>Selamat Datang di TaskFlow</h1>
-        <p class="muted">Fullstack .NET Task Manager — ASP.NET Core + Blazor + MySQL</p>
-        <button @onclick="GoToLogin">Login</button>
-        <button class="secondary" @onclick="GoToRegister">Register</button>
+    @* === Landing Page (belum login) === *@
+    <div class="d-flex align-center justify-center" style="min-height: 60vh;">
+        <MudPaper Class="pa-10 text-center" Elevation="0" Outlined="true"
+                  Style="border-radius: 20px; max-width: 560px; width: 100%;">
+            <MudIcon Icon="@Icons.Material.Filled.CheckCircle"
+                     Color="Color.Primary"
+                     Style="font-size: 64px;" />
+            <MudText Typo="Typo.h3" Class="mt-4" Style="font-weight: 700;">
+                TaskFlow
+            </MudText>
+            <MudText Typo="Typo.body1" Class="mud-text-secondary mt-2 mb-6">
+                Fullstack .NET Task Manager — ASP.NET Core + Blazor + MySQL
+            </MudText>
+            <div class="d-flex gap-3 justify-center">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Filled.Login"
+                           OnClick="GoToLogin"
+                           Style="border-radius: 12px;">
+                    Login
+                </MudButton>
+                <MudButton Variant="Variant.Outlined"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Filled.PersonAdd"
+                           OnClick="GoToRegister"
+                           Style="border-radius: 12px;">
+                    Register
+                </MudButton>
+            </div>
+        </MudPaper>
     </div>
 }
 else
 {
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-label">Total Task</div>
-            <div class="stat-value">@total</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Selesai</div>
-            <div class="stat-value done">@done</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Pending</div>
-            <div class="stat-value pending">@pending</div>
-        </div>
+    @* === Greeting === *@
+    <div class="mb-6">
+        <MudText Typo="Typo.h4" Style="font-weight: 700;">
+            Halo, @(email?.Split('@')[0]) 👋
+        </MudText>
+        <MudText Typo="Typo.body2" Class="mud-text-secondary mt-1">
+            Berikut ringkasan produktivitasmu hari ini
+        </MudText>
     </div>
 
-    <div class="card">
-        <h3>Task Terbaru</h3>
+    @* === Stats Cards === *@
+    <div class="stats-row mb-6">
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.ListAlt" Color="Color.Primary" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@total</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Total Task</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@done</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Selesai</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.PendingActions" Color="Color.Warning" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@pending</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Pending</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Color="Color.Info" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">
+                    @(total == 0 ? 0 : (done * 100 / total))%
+                </MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Progress</MudText>
+            </div>
+        </MudPaper>
+    </div>
+
+    @* === Recent Tasks === *@
+    <MudPaper Class="pa-6" Elevation="0" Outlined="true" Style="border-radius: 12px;">
+        <div class="d-flex align-center mb-4">
+            <MudIcon Icon="@Icons.Material.Filled.History" Color="Color.Primary" Class="mr-2" />
+            <MudText Typo="Typo.h6">Task Terbaru</MudText>
+            <MudSpacer />
+            <MudButton Variant="Variant.Text"
+                       Color="Color.Primary"
+                       EndIcon="@Icons.Material.Filled.ArrowForward"
+                       OnClick="GoToTasks"
+                       Size="Size.Small">
+                Lihat Semua
+            </MudButton>
+        </div>
+
         @if (recentTasks == null)
         {
-            <p class="muted">Memuat...</p>
+            <div class="text-center py-6">
+                <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+            </div>
         }
         else if (recentTasks.Count == 0)
         {
-            <p class="muted">Belum ada task. <a href="/tasks">Tambah sekarang</a></p>
+            <div class="text-center py-8">
+                <MudIcon Icon="@Icons.Material.Outlined.Inbox"
+                         Style="font-size: 48px; opacity: 0.25;" />
+                <MudText Typo="Typo.body1" Class="mt-3 mud-text-secondary">
+                    Belum ada task
+                </MudText>
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Add"
+                           OnClick="GoToTasks"
+                           Class="mt-4"
+                           Style="border-radius: 10px;">
+                    Buat Task Pertama
+                </MudButton>
+            </div>
         }
         else
         {
-            @foreach (var t in recentTasks)
-            {
-                <div class="task-item">
-                    <label>
-                        <input type="checkbox" checked="@t.IsDone" disabled />
-                        <span class="task-title @(t.IsDone ? "done" : "")">@t.Title</span>
-                    </label>
-                    @if (!string.IsNullOrEmpty(t.Description))
-                    {
-                        <div class="task-desc">@t.Description</div>
-                    }
-                </div>
-            }
-            <button class="secondary" @onclick="GoToTasks">Lihat Semua Task</button>
+            <div class="task-list">
+                @foreach (var t in recentTasks)
+                {
+                    <MudPaper Class="task-row" Elevation="0" Outlined="true" @key="t.Id">
+                        <div class="d-flex align-center gap-3 flex-grow-1">
+                            <MudIcon Icon="@(t.IsDone ? Icons.Material.Filled.CheckCircle : Icons.Material.Outlined.RadioButtonUnchecked)"
+                                     Color="@(t.IsDone ? Color.Success : Color.Default)"
+                                     Size="Size.Medium" />
+
+                            <div class="flex-grow-1">
+                                <MudText Typo="Typo.body1"
+                                         Style="@(t.IsDone ? "text-decoration: line-through; color: #9ca3af;" : "font-weight: 500;")">
+                                    @t.Title
+                                </MudText>
+                                @if (!string.IsNullOrEmpty(t.Description))
+                                {
+                                    <MudText Typo="Typo.body2" Class="mud-text-secondary">@t.Description</MudText>
+                                }
+                            </div>
+
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Text"
+                                     Color="@(t.IsDone ? Color.Success : Color.Warning)">
+                                @(t.IsDone ? "Selesai" : "Pending")
+                            </MudChip>
+
+                            <MudText Typo="Typo.caption" Class="mud-text-secondary d-none d-md-block"
+                                     Style="min-width: 90px; text-align: right;">
+                                @t.CreatedAt.ToLocalTime().ToString("dd MMM")
+                            </MudText>
+                        </div>
+                    </MudPaper>
+                }
+            </div>
         }
-    </div>
+    </MudPaper>
 }
 
 @code {
     private bool isLoggedIn;
+    private string? email;
     private List<TaskResponse>? allTasks;
     private List<TaskResponse>? recentTasks;
     private int total, done, pending;
@@ -72,6 +177,7 @@ else
         isLoggedIn = await Auth.IsLoggedInAsync();
         if (!isLoggedIn) return;
 
+        email = await Auth.GetEmailAsync();
         allTasks = await TaskSvc.GetAllAsync();
         total = allTasks.Count;
         done = allTasks.Count(t => t.IsDone);

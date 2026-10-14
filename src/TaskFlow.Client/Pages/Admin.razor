@@ -1,135 +1,208 @@
 @page "/admin"
 @using TaskFlow.Client.Services
 @using TaskFlow.Client.Models
+@using TaskFlow.Client.Dialogs
 @inject AdminService AdminSvc
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
-<h3>Admin Panel</h3>
+<div class="d-flex align-center mb-6">
+    <div>
+        <MudText Typo="Typo.h4" Style="font-weight: 700;">Admin Panel</MudText>
+        <MudText Typo="Typo.body2" Class="mud-text-secondary mt-1">
+            Kelola user & task di seluruh aplikasi
+        </MudText>
+    </div>
+    <MudSpacer />
+    <MudChip T="string" Color="Color.Warning" Icon="@Icons.Material.Filled.Shield" Size="Size.Medium">
+        ADMIN MODE
+    </MudChip>
+</div>
 
 @if (!isAdmin)
 {
-    <div class="alert">Anda tidak punya akses ke halaman ini.</div>
+    <MudAlert Severity="Severity.Warning" Variant="Variant.Filled" Icon="@Icons.Material.Filled.Lock">
+        Anda tidak punya akses ke halaman ini.
+    </MudAlert>
 }
 else
 {
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-label">Total User</div>
-            <div class="stat-value">@(users?.Count ?? 0)</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Total Task</div>
-            <div class="stat-value">@(tasks?.Count ?? 0)</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Task Selesai</div>
-            <div class="stat-value done">@(tasks?.Count(t => t.IsDone) ?? 0)</div>
-        </div>
+    @* === Stats Cards === *@
+    <div class="stats-row mb-6">
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@(users?.Count ?? 0)</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Total User</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.ListAlt" Color="Color.Info" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@(tasks?.Count ?? 0)</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Total Task</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@(tasks?.Count(t => t.IsDone) ?? 0)</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Task Selesai</MudText>
+            </div>
+        </MudPaper>
+        <MudPaper Class="stat-card" Elevation="0" Outlined="true">
+            <MudIcon Icon="@Icons.Material.Filled.PendingActions" Color="Color.Warning" Size="Size.Medium" />
+            <div>
+                <MudText Typo="Typo.h5" Style="font-weight: 700;">@(tasks?.Count(t => !t.IsDone) ?? 0)</MudText>
+                <MudText Typo="Typo.caption" Class="mud-text-secondary">Task Pending</MudText>
+            </div>
+        </MudPaper>
     </div>
 
     @if (!string.IsNullOrEmpty(error))
     {
-        <div class="alert">@error</div>
+        <MudAlert Severity="Severity.Error" Class="mb-4" Dense="true">@error</MudAlert>
     }
 
-    <div class="card">
-        <h3>Daftar User</h3>
-        @if (users == null)
-        {
-            <p class="muted">Memuat...</p>
-        }
-        else if (users.Count == 0)
-        {
-            <p class="muted">Belum ada user.</p>
-        }
-        else
-        {
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Task</th>
-                        <th>Terdaftar</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var u in users)
-                    {
-                        <tr>
-                            <td>@u.Id</td>
-                            <td>@u.Email</td>
-                            <td>
-                                <span class="role-badge @(u.Role.ToLower())">@u.Role</span>
-                            </td>
-                            <td>@u.TaskCount</td>
-                            <td>@u.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
-                            <td>
-                                @if (u.Email != currentEmail)
-                                {
-                                    <button class="danger small" @onclick="() => ConfirmDelete(u)">Hapus</button>
-                                }
-                                else
-                                {
-                                    <span class="muted">(diri sendiri)</span>
-                                }
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </div>
+    @* === Tab: Users + Tasks === *@
+    <MudTabs Elevation="0" Rounded="true" PanelClass="pt-6" Color="Color.Primary" ApplyEffectsToContainer="true">
+        <MudTabPanel Text="Users" Icon="@Icons.Material.Filled.People">
+            <MudDataGrid T="AdminUserResponse"
+                         Items="@users"
+                         Hover="true"
+                         Dense="true"
+                         Striped="true"
+                         Elevation="0"
+                         Loading="@(users == null)"
+                         LoadingProgressColor="Color.Primary"
+                         Filterable="true"
+                         QuickFilter="@_quickFilterUsers">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">Daftar User</MudText>
+                    <MudSpacer />
+                    <MudTextField @bind-Value="_searchUsers"
+                                  Placeholder="Cari user..."
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@Icons.Material.Filled.Search"
+                                  IconSize="Size.Medium"
+                                  Immediate="true"
+                                  Variant="Variant.Outlined"
+                                  Margin="Margin.Dense"
+                                  Clearable="true" />
+                </ToolBarContent>
+                <Columns>
+                    <TemplateColumn Title="" Sortable="false">
+                        <CellTemplate>
+                            <MudAvatar Color="@(context.Item.Role == "Admin" ? Color.Warning : Color.Primary)"
+                                       Size="Size.Medium"
+                                       Style="font-size: 14px; font-weight: 600;">
+                                @(context.Item.Email.Substring(0, 1).ToUpper())
+                            </MudAvatar>
+                        </CellTemplate>
+                    </TemplateColumn>
+                    <PropertyColumn Property="x => x.Email" Title="Email" />
+                    <PropertyColumn Property="x => x.Role" Title="Role">
+                        <CellTemplate>
+                            <MudChip T="string"
+                                     Size="Size.Small"
+                                     Variant="Variant.Filled"
+                                     Color="@(context.Item.Role == "Admin" ? Color.Warning : Color.Info)"
+                                     Icon="@(context.Item.Role == "Admin" ? Icons.Material.Filled.Shield : Icons.Material.Filled.Person)">
+                                @context.Item.Role
+                            </MudChip>
+                        </CellTemplate>
+                    </PropertyColumn>
+                    <PropertyColumn Property="x => x.TaskCount" Title="Task" />
+                    <PropertyColumn Property="x => x.CreatedAt" Title="Terdaftar" Format="dd MMM yyyy" />
+                    <TemplateColumn Title="Aksi" Sortable="false">
+                        <CellTemplate>
+                            @if (context.Item.Email != currentEmail)
+                            {
+                                <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                               Size="Size.Small"
+                                               Color="Color.Error"
+                                               OnClick="@(() => ConfirmDelete(context.Item))"
+                                               Title="Hapus user" />
+                            }
+                            else
+                            {
+                                <MudChip T="string" Size="Size.Small" Variant="Variant.Text" Color="Color.Default">
+                                    Anda
+                                </MudChip>
+                            }
+                        </CellTemplate>
+                    </TemplateColumn>
+                </Columns>
+                <NoRecordsContent>
+                    <MudText Class="mud-text-secondary">Belum ada user.</MudText>
+                </NoRecordsContent>
+            </MudDataGrid>
+        </MudTabPanel>
 
-    <div class="card">
-        <h3>Semua Task</h3>
-        @if (tasks == null)
-        {
-            <p class="muted">Memuat...</p>
-        }
-        else if (tasks.Count == 0)
-        {
-            <p class="muted">Belum ada task.</p>
-        }
-        else
-        {
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Judul</th>
-                        <th>Owner</th>
-                        <th>Status</th>
-                        <th>Dibuat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var t in tasks)
-                    {
-                        <tr>
-                            <td>@t.Id</td>
-                            <td>@t.Title</td>
-                            <td>@t.OwnerEmail</td>
-                            <td>
-                                @if (t.IsDone)
-                                {
-                                    <span class="status-badge done">Selesai</span>
-                                }
-                                else
-                                {
-                                    <span class="status-badge pending">Pending</span>
-                                }
-                            </td>
-                            <td>@t.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </div>
+        <MudTabPanel Text="Tasks" Icon="@Icons.Material.Filled.ListAlt" BadgeData="@(tasks?.Count.ToString())" BadgeColor="Color.Primary">
+            <MudDataGrid T="AdminTaskResponse"
+                         Items="@tasks"
+                         Hover="true"
+                         Dense="true"
+                         Striped="true"
+                         Elevation="0"
+                         Loading="@(tasks == null)"
+                         LoadingProgressColor="Color.Primary"
+                         QuickFilter="@_quickFilterTasks">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">Semua Task</MudText>
+                    <MudSpacer />
+                    <MudTextField @bind-Value="_searchTasks"
+                                  Placeholder="Cari task..."
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@Icons.Material.Filled.Search"
+                                  IconSize="Size.Medium"
+                                  Immediate="true"
+                                  Variant="Variant.Outlined"
+                                  Margin="Margin.Dense"
+                                  Clearable="true" />
+                </ToolBarContent>
+                <Columns>
+                    <PropertyColumn Property="x => x.Id" Title="ID" />
+                    <PropertyColumn Property="x => x.Title" Title="Judul" />
+                    <PropertyColumn Property="x => x.OwnerEmail" Title="Owner">
+                        <CellTemplate>
+                            <div class="d-flex align-center">
+                                <MudAvatar Color="Color.Primary" Size="Size.Small" Class="mr-2" Style="font-size: 11px;">
+                                    @(context.Item.OwnerEmail.Substring(0, 1).ToUpper())
+                                </MudAvatar>
+                                <MudText Typo="Typo.body2">@context.Item.OwnerEmail</MudText>
+                            </div>
+                        </CellTemplate>
+                    </PropertyColumn>
+                    <PropertyColumn Property="x => x.IsDone" Title="Status">
+                        <CellTemplate>
+                            @if (context.Item.IsDone)
+                            {
+                                <MudChip T="string" Size="Size.Small" Variant="Variant.Filled" Color="Color.Success"
+                                         Icon="@Icons.Material.Filled.Check">
+                                    Selesai
+                                </MudChip>
+                            }
+                            else
+                            {
+                                <MudChip T="string" Size="Size.Small" Variant="Variant.Filled" Color="Color.Warning"
+                                         Icon="@Icons.Material.Filled.Schedule">
+                                    Pending
+                                </MudChip>
+                            }
+                        </CellTemplate>
+                    </PropertyColumn>
+                    <PropertyColumn Property="x => x.CreatedAt" Title="Dibuat" Format="dd MMM yyyy HH:mm" />
+                </Columns>
+                <NoRecordsContent>
+                    <MudText Class="mud-text-secondary">Belum ada task.</MudText>
+                </NoRecordsContent>
+            </MudDataGrid>
+        </MudTabPanel>
+    </MudTabs>
 }
 
 @code {
@@ -138,6 +211,26 @@ else
     private List<AdminUserResponse>? users;
     private List<AdminTaskResponse>? tasks;
     private string? error;
+
+    private string _searchUsers = "";
+    private string _searchTasks = "";
+
+    private Func<AdminUserResponse, bool> _quickFilterUsers => user =>
+    {
+        if (string.IsNullOrWhiteSpace(_searchUsers)) return true;
+        var s = _searchUsers.ToLowerInvariant();
+        return user.Email.ToLowerInvariant().Contains(s) ||
+               user.Role.ToLowerInvariant().Contains(s);
+    };
+
+    private Func<AdminTaskResponse, bool> _quickFilterTasks => task =>
+    {
+        if (string.IsNullOrWhiteSpace(_searchTasks)) return true;
+        var s = _searchTasks.ToLowerInvariant();
+        return task.Title.ToLowerInvariant().Contains(s) ||
+               task.OwnerEmail.ToLowerInvariant().Contains(s) ||
+               (task.Description ?? "").ToLowerInvariant().Contains(s);
+    };
 
     protected override async Task OnInitializedAsync()
     {
@@ -156,15 +249,29 @@ else
 
     private async Task ConfirmDelete(AdminUserResponse u)
     {
+        var parameters = new DialogParameters<ConfirmDeleteDialog>
+        {
+            { x => x.Title, "Hapus User" },
+            { x => x.Message, $"Yakin mau hapus user {u.Email}? Semua task miliknya juga akan terhapus." },
+            { x => x.ConfirmText, "Hapus" }
+        };
+
+        var dialog = await DialogService.ShowAsync<ConfirmDeleteDialog>("Konfirmasi", parameters);
+        var result = await dialog.Result;
+
+        if (result is null || result.Canceled) return;
+
         error = null;
         var ok = await AdminSvc.DeleteUserAsync(u.Id);
         if (ok)
         {
+            Snackbar.Add($"User {u.Email} dihapus", Severity.Success);
             await LoadAsync();
         }
         else
         {
             error = $"Gagal menghapus user {u.Email}";
+            Snackbar.Add("Gagal menghapus user", Severity.Error);
         }
     }
 }

@@ -15,5 +15,6 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddScoped<TokenStore>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TaskService>();
+builder.Services.AddScoped<AdminService>();
 
 await builder.Build().RunAsync();

@@ -1,0 +1,170 @@
+@page "/admin"
+@using TaskFlow.Client.Services
+@using TaskFlow.Client.Models
+@inject AdminService AdminSvc
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<h3>Admin Panel</h3>
+
+@if (!isAdmin)
+{
+    <div class="alert">Anda tidak punya akses ke halaman ini.</div>
+}
+else
+{
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total User</div>
+            <div class="stat-value">@(users?.Count ?? 0)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Total Task</div>
+            <div class="stat-value">@(tasks?.Count ?? 0)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Task Selesai</div>
+            <div class="stat-value done">@(tasks?.Count(t => t.IsDone) ?? 0)</div>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <div class="alert">@error</div>
+    }
+
+    <div class="card">
+        <h3>Daftar User</h3>
+        @if (users == null)
+        {
+            <p class="muted">Memuat...</p>
+        }
+        else if (users.Count == 0)
+        {
+            <p class="muted">Belum ada user.</p>
+        }
+        else
+        {
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Task</th>
+                        <th>Terdaftar</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var u in users)
+                    {
+                        <tr>
+                            <td>@u.Id</td>
+                            <td>@u.Email</td>
+                            <td>
+                                <span class="role-badge @(u.Role.ToLower())">@u.Role</span>
+                            </td>
+                            <td>@u.TaskCount</td>
+                            <td>@u.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                            <td>
+                                @if (u.Email != currentEmail)
+                                {
+                                    <button class="danger small" @onclick="() => ConfirmDelete(u)">Hapus</button>
+                                }
+                                else
+                                {
+                                    <span class="muted">(diri sendiri)</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="card">
+        <h3>Semua Task</h3>
+        @if (tasks == null)
+        {
+            <p class="muted">Memuat...</p>
+        }
+        else if (tasks.Count == 0)
+        {
+            <p class="muted">Belum ada task.</p>
+        }
+        else
+        {
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Judul</th>
+                        <th>Owner</th>
+                        <th>Status</th>
+                        <th>Dibuat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var t in tasks)
+                    {
+                        <tr>
+                            <td>@t.Id</td>
+                            <td>@t.Title</td>
+                            <td>@t.OwnerEmail</td>
+                            <td>
+                                @if (t.IsDone)
+                                {
+                                    <span class="status-badge done">Selesai</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge pending">Pending</span>
+                                }
+                            </td>
+                            <td>@t.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+}
+
+@code {
+    private bool isAdmin;
+    private string? currentEmail;
+    private List<AdminUserResponse>? users;
+    private List<AdminTaskResponse>? tasks;
+    private string? error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAdmin = await Auth.IsAdminAsync();
+        currentEmail = await Auth.GetEmailAsync();
+        if (!isAdmin) return;
+
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync()
+    {
+        users = await AdminSvc.GetUsersAsync();
+        tasks = await AdminSvc.GetTasksAsync();
+    }
+
+    private async Task ConfirmDelete(AdminUserResponse u)
+    {
+        error = null;
+        var ok = await AdminSvc.DeleteUserAsync(u.Id);
+        if (ok)
+        {
+            await LoadAsync();
+        }
+        else
+        {
+            error = $"Gagal menghapus user {u.Email}";
+        }
+    }
+}

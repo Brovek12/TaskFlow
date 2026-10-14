@@ -10,12 +10,21 @@
         <nav class="sidebar-nav">
             <NavLink href="/" Match="NavLinkMatch.All">🏠 Dashboard</NavLink>
             <NavLink href="/tasks">📋 Tasks</NavLink>
+
+            @if (isAdmin)
+            {
+                <NavLink href="/admin">🛡️ Admin Panel</NavLink>
+            }
         </nav>
 
         <div class="sidebar-footer">
             @if (isLoggedIn)
             {
                 <span class="user-email">@email</span>
+                @if (isAdmin)
+                {
+                    <span class="user-role-badge">ADMIN</span>
+                }
                 <button @onclick="Logout">Logout</button>
             }
             else
@@ -39,16 +48,13 @@
 
 @code {
     private bool isLoggedIn;
+    private bool isAdmin;
     private string? email;
 
     protected override async Task OnInitializedAsync()
     {
-        await RefreshState();
-    }
-
-    private async Task RefreshState()
-    {
         isLoggedIn = await Auth.IsLoggedInAsync();
+        isAdmin = await Auth.IsAdminAsync();
         email = await Auth.GetEmailAsync();
     }
 

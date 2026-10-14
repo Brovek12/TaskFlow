@@ -1029,3 +1029,4 @@ D:\project\TaskFlow\src\TaskFlow.Client\obj\Debug\net8.0\TaskFlow.Client.dll
 D:\project\TaskFlow\src\TaskFlow.Client\obj\Debug\net8.0\refint\TaskFlow.Client.dll
 D:\project\TaskFlow\src\TaskFlow.Client\obj\Debug\net8.0\TaskFlow.Client.pdb
 D:\project\TaskFlow\src\TaskFlow.Client\obj\Debug\net8.0\ref\TaskFlow.Client.dll
+D:\project\TaskFlow\src\TaskFlow.Client\obj\Debug\net8.0\TaskFlow.Client.sourcelink.json

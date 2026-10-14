@@ -14,6 +14,11 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
-            .IsUnique();    
+            .IsUnique();
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.Role)
+            .HasMaxLength(32)
+            .HasDefaultValue(Roles.User);
     }
 }

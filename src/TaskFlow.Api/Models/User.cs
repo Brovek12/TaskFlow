@@ -1,10 +1,11 @@
-    namespace TaskFlow.Api.Models;
+namespace TaskFlow.Api.Models;
 
 public class User
 {
     public int Id { get; set; }
     public string Email { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
+    public string Role { get; set; } = Roles.User;   // ← default: User
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public List<TaskItem> Tasks { get; set; } = new();
 }

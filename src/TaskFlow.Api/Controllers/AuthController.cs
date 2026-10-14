@@ -20,15 +20,19 @@ public class AuthController(AppDbContext db, TokenService tokens) : ControllerBa
         if (await db.Users.AnyAsync(u => u.Email == dto.Email))
             return BadRequest("Email sudah terdaftar");
 
+        // User pertama otomatis jadi Admin
+        var isFirstUser = !await db.Users.AnyAsync();
+
         var user = new User
         {
             Email = dto.Email,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+            Role = isFirstUser ? Roles.Admin : Roles.User
         };
         db.Users.Add(user);
         await db.SaveChangesAsync();
 
-        return Ok(new AuthResponse(tokens.CreateToken(user), user.Email));
+        return Ok(new AuthResponse(tokens.CreateToken(user), user.Email, user.Role));
     }
 
     [HttpPost("login")]
@@ -38,6 +42,6 @@ public class AuthController(AppDbContext db, TokenService tokens) : ControllerBa
         if (user is null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             return Unauthorized("Email atau password salah");
 
-        return Ok(new AuthResponse(tokens.CreateToken(user), user.Email));
+        return Ok(new AuthResponse(tokens.CreateToken(user), user.Email, user.Role));
     }
 }

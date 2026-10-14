@@ -117,3 +117,4 @@ D:\project\TaskFlow\src\TaskFlow.Api\obj\Debug\net8.0\refint\TaskFlow.Api.dll
 D:\project\TaskFlow\src\TaskFlow.Api\obj\Debug\net8.0\TaskFlow.Api.pdb
 D:\project\TaskFlow\src\TaskFlow.Api\obj\Debug\net8.0\TaskFlow.Api.genruntimeconfig.cache
 D:\project\TaskFlow\src\TaskFlow.Api\obj\Debug\net8.0\ref\TaskFlow.Api.dll
+D:\project\TaskFlow\src\TaskFlow.Api\obj\Debug\net8.0\TaskFlow.Api.sourcelink.json

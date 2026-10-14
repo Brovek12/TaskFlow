@@ -4,10 +4,9 @@ https://github.com/user-attachments/assets/20ef0c70-c770-4d77-a2ba-44071c581ff5
 
 
 
-
 # TaskFlow
 
-Fullstack task management app — **ASP.NET Core 8 Web API + Blazor WebAssembly + MySQL**, dengan JWT authentication.
+Fullstack task management app — **ASP.NET Core 8 Web API + Blazor WebAssembly + MySQL**, dengan JWT authentication dan role-based access control (RBAC).
 
 > Project ini saya bangun untuk transisi dari **Laravel → .NET**. Pemetaan konsep ada di [bawah](#-laravel--net-mapping).
 
@@ -15,13 +14,38 @@ Fullstack task management app — **ASP.NET Core 8 Web API + Blazor WebAssembly 
 
 ## ✨ Fitur
 
-- 🔐 **Auth** — Register & login dengan JWT (BCrypt untuk hash password)
-- ✅ **Task CRUD** — Create, Read, Update, Delete task
-- 👤 **User Isolation** — Setiap user hanya bisa melihat & mengelola task miliknya sendiri
-- 📊 **Dashboard** — Statistik total, selesai, dan pending task
-- 🎨 **Blazor UI** — Frontend interaktif dengan sidebar + dashboard
-- 🧪 **Unit Tests** — xUnit untuk service & data layer
-- 📘 **Swagger** — Dokumentasi API interaktif
+### 🔐 Authentication & Authorization
+- Register & login dengan **JWT** (BCrypt untuk hash password)
+- **Role-based access control** — User & Admin
+- User pertama otomatis jadi Admin
+- Endpoint admin diproteksi `[Authorize(Roles = "Admin")]`
+
+### ✅ Task Management
+- CRUD task lengkap (Create, Read, Update, Delete)
+- **Data isolation** — setiap user hanya bisa lihat & kelola task miliknya sendiri
+- **Search** task berdasarkan judul/deskripsi
+- **Filter** status: Semua / Aktif / Selesai
+- Toggle selesai dengan checkbox
+- Dialog create/edit dengan **MudBlazor**
+
+### 📊 Dashboard
+- Statistik personal: Total Task, Selesai, Pending, Progress %
+- List 5 task terbaru
+- Greeting user
+
+### 🛡️ Admin Panel
+- Statistik global: Total User, Total Task, Selesai, Pending
+- Tabel user dengan role & jumlah task
+- Tabel semua task (lintas user) dengan owner
+- Hapus user dengan **confirmation dialog**
+- Search di kedua tabel
+
+### 🎨 UI/UX
+- **MudBlazor** components — Material Design
+- Sidebar collapsible dengan icon
+- Responsive — mobile friendly
+- **Snackbar** notifikasi
+- **Loading states** & empty states
 
 ---
 
@@ -31,6 +55,7 @@ Fullstack task management app — **ASP.NET Core 8 Web API + Blazor WebAssembly 
 |---|---|
 | Backend | ASP.NET Core 8 Web API |
 | Frontend | Blazor WebAssembly (.NET 8) |
+| UI Library | MudBlazor (Material Design) |
 | ORM | Entity Framework Core 8 |
 | Database | MySQL (via XAMPP) |
 | Auth | JWT Bearer + BCrypt |

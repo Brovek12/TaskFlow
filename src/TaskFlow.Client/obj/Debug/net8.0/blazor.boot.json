@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TaskFlow.Client",
   "resources": {
-    "hash": "sha256-cavmO2NvzUuCbDgXlRbSbaMiK2CqtJSkncLJPZw8/GY=",
+    "hash": "sha256-4mwR85oUOMKTGF+j8OogmX6a2ssiATE6bX2vNy/O10I=",
     "jsModuleNative": {
       "dotnet.native.8.0.32.w224cqogel.js": "sha256-6mDkQm8wcqsePLieS1uDjmZJGTlxyzuaoKrjt7Rlztk="
     },
@@ -211,10 +211,10 @@
       "mscorlib.wasm": "sha256-OmTGouRNx6WSUuId/voXk3BdmUBjMaPhBmzCV5Ou50U=",
       "netstandard.wasm": "sha256-F85o3B9rvmQY3Fqw2NA9m0s3ClnaV52mai+2TPXGYOQ=",
       "System.Private.CoreLib.wasm": "sha256-IG8eU8RA+sth9u5bXJUd+dGj2XuUViwhA9FS6a3GZOw=",
-      "TaskFlow.Client.wasm": "sha256-oYiI2LiOban0fzhrjxZupuKjA0D66AE5CoPFA1HtX5A="
+      "TaskFlow.Client.wasm": "sha256-uNBTunwfiSj3BW1G1VJfsMZFU4YhhGP++BoMkeLj8g0="
     },
     "pdb": {
-      "TaskFlow.Client.pdb": "sha256-uC/PbZHWuVIQ+VvuRFDtr9nPOwWxVBx9oDMsUYLHibc="
+      "TaskFlow.Client.pdb": "sha256-i/Dt7cIzsI1THpfFv/sJ7iCEJpoX3jf5LiMIvAIMTz0="
     }
   },
   "cacheBootResources": true,

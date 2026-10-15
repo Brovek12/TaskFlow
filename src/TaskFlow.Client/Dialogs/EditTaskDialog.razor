@@ -22,7 +22,7 @@
         <MudTextField @bind-Value="_description"
                       Label="Deskripsi"
                       Variant="Variant.Outlined"
-                      Lines="5"
+                      Lines="4"
                       Class="mb-4" />
 
         <MudCheckBox @bind-Value="_isDone"
@@ -32,9 +32,7 @@
     </DialogContent>
 
     <DialogActions>
-        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="Cancel">
-            Batal
-        </MudButton>
+        <MudButton Variant="Variant.Text" OnClick="Cancel">Batal</MudButton>
         <MudButton Variant="Variant.Filled"
                    Color="Color.Primary"
                    StartIcon="@Icons.Material.Filled.Save"
@@ -53,7 +51,7 @@
     private string _description = "";
     private bool _isDone;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         _title = Task.Title;
         _description = Task.Description ?? "";
@@ -77,7 +75,7 @@
         {
             Snackbar.Add("Task diperbarui", Severity.Success);
             await OnSaved.InvokeAsync();
-            MudDialog.Close();
+            MudDialog.Close(DialogResult.Ok(true));
         }
         else
         {

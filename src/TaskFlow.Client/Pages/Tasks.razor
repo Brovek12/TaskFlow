@@ -183,26 +183,33 @@
 
     var options = new DialogOptions
     {
-        MaxWidth = MaxWidth.Medium,      // ← ganti dari Small ke Medium (960px)
+        MaxWidth = MaxWidth.Medium,       // ← 960px
         FullWidth = true,
-        CloseOnEscapeKey = true,
-        CloseButton = true
+        CloseButton = true,
+        CloseOnEscapeKey = true
     };
 
-    var dialog = await DialogService.ShowAsync<CreateTaskDialog>("", parameters, options);
-    await dialog.Result;
+    await DialogService.ShowAsync<CreateTaskDialog>("", parameters, options);
 }
-    private async Task OpenEditDialog(TaskResponse task)
-    {
-        var parameters = new DialogParameters<EditTaskDialog>
-        {
-            { x => x.Task, task },
-            { x => x.OnSaved, EventCallback.Factory.Create(this, LoadAsync) }
-        };
 
-        var dialog = await DialogService.ShowAsync<EditTaskDialog>("Edit Task", parameters);
-        await dialog.Result;
-    }
+private async Task OpenEditDialog(TaskResponse task)
+{
+    var parameters = new DialogParameters<EditTaskDialog>
+    {
+        { x => x.Task, task },
+        { x => x.OnSaved, EventCallback.Factory.Create(this, LoadAsync) }
+    };
+
+    var options = new DialogOptions
+    {
+        MaxWidth = MaxWidth.Medium,
+        FullWidth = true,
+        CloseButton = true,
+        CloseOnEscapeKey = true
+    };
+
+    await DialogService.ShowAsync<EditTaskDialog>("", parameters, options);
+}
 
     private async Task ToggleDone(TaskResponse t)
     {

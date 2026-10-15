@@ -22,15 +22,12 @@
         <MudTextField @bind-Value="_description"
                       Label="Deskripsi (opsional)"
                       Variant="Variant.Outlined"
-                      Placeholder="Detail tambahan tentang task ini..."
-                      Lines="5"
-                      Class="mb-2" />
+                      Placeholder="Detail tambahan..."
+                      Lines="4" />
     </DialogContent>
 
     <DialogActions>
-        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="Cancel">
-            Batal
-        </MudButton>
+        <MudButton Variant="Variant.Text" OnClick="Cancel">Batal</MudButton>
         <MudButton Variant="Variant.Filled"
                    Color="Color.Primary"
                    StartIcon="@Icons.Material.Filled.Save"
@@ -64,7 +61,7 @@
         {
             Snackbar.Add("Task ditambahkan", Severity.Success);
             await OnSaved.InvokeAsync();
-            MudDialog.Close();
+            MudDialog.Close(DialogResult.Ok(true));
         }
         else
         {
